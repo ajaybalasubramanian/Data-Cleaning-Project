@@ -1,0 +1,128 @@
+
+/* Start of top-level graph */
+digraph Workflow {
+rankdir=TB
+
+/* Title for graph */
+fontname=Helvetica; fontsize=18; labelloc=t
+label=CleanWithOpenRefine
+
+/* Start of double cluster for drawing box around nodes in workflow */
+subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
+subgraph cluster_workflow_box_inner { label=""; penwidth=0
+
+/* Style for nodes representing atomic programs in workflow */
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Helvetica]
+
+/* Nodes representing atomic programs in workflow */
+LoadintoOpenRefine [shape=record rankdir=LR label="{<f0> LoadintoOpenRefine |<f1> Upload farmersmarkets.csv data into OpenRefine and clean following columns}"];
+TrimSpaces [shape=record rankdir=LR label="{<f0> TrimSpaces |<f1> Trim leading and trailing white space}"];
+CollapseSpaces [shape=record rankdir=LR label="{<f0> CollapseSpaces |<f1> Collapse consecutive white spaces}"];
+ClusterValues [shape=record rankdir=LR label="{<f0> ClusterValues |<f1> Cluster Similar values}"];
+SplitInto2Columns [shape=record rankdir=LR label="{<f0> SplitInto2Columns |<f1> Split date into Start Date and End Date}"];
+TexttoNumber [shape=record rankdir=LR label="{<f0> TexttoNumber |<f1> Convert Text to Number}"];
+
+/* Style for nodes representing non-parameter data channels in workflow */
+node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
+
+/* Nodes for non-parameter data channels in workflow */
+"farmersmarkets.csv"
+MarketName
+Facebook
+Twitter
+Website
+Youtube
+OtherMeida
+street
+city
+county
+state
+Season1Date
+Season2Date
+Season3Date
+x
+y
+"farmersmarkets_or.csv"
+
+/* Style for nodes representing parameter channels in workflow */
+node[shape=box style="rounded,filled" fillcolor="#FCFCFC" peripheries=1 fontname=Helvetica]
+
+/* Nodes representing parameter channels in workflow */
+
+/* Edges representing connections between programs and channels */
+LoadintoOpenRefine -> MarketName
+LoadintoOpenRefine -> Facebook
+LoadintoOpenRefine -> Twitter
+LoadintoOpenRefine -> Website
+LoadintoOpenRefine -> Youtube
+LoadintoOpenRefine -> OtherMeida
+LoadintoOpenRefine -> city
+LoadintoOpenRefine -> street
+LoadintoOpenRefine -> county
+LoadintoOpenRefine -> state
+LoadintoOpenRefine -> x
+LoadintoOpenRefine -> y
+LoadintoOpenRefine -> Season1Date
+LoadintoOpenRefine -> Season2Date
+LoadintoOpenRefine -> Season3Date
+"farmersmarkets.csv" -> LoadintoOpenRefine
+TrimSpaces -> "farmersmarkets_or.csv"
+MarketName -> TrimSpaces
+Facebook -> TrimSpaces
+Twitter -> TrimSpaces
+Website -> TrimSpaces
+Youtube -> TrimSpaces
+OtherMeida -> TrimSpaces
+street -> TrimSpaces
+city -> TrimSpaces
+county -> TrimSpaces
+state -> TrimSpaces
+CollapseSpaces -> "farmersmarkets_or.csv"
+MarketName -> CollapseSpaces
+Facebook -> CollapseSpaces
+Twitter -> CollapseSpaces
+Website -> CollapseSpaces
+Youtube -> CollapseSpaces
+OtherMeida -> CollapseSpaces
+street -> CollapseSpaces
+city -> CollapseSpaces
+county -> CollapseSpaces
+state -> CollapseSpaces
+ClusterValues -> "farmersmarkets_or.csv"
+MarketName -> ClusterValues
+street -> ClusterValues
+city -> ClusterValues
+county -> ClusterValues
+state -> ClusterValues
+SplitInto2Columns -> "farmersmarkets_or.csv"
+Season1Date -> SplitInto2Columns
+Season2Date -> SplitInto2Columns
+Season3Date -> SplitInto2Columns
+TexttoNumber -> "farmersmarkets_or.csv"
+Season1Date -> TexttoNumber
+x -> TexttoNumber
+y -> TexttoNumber
+
+/* End of double cluster for drawing box around nodes in workflow */
+}}
+
+/* Style for nodes representing workflow input ports */
+node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+
+/* Nodes representing workflow input ports */
+"farmersmarkets.csv_input_port" [label=""]
+
+/* Style for nodes representing workflow output ports */
+node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+
+/* Nodes representing workflow output ports */
+"farmersmarkets_or.csv_output_port" [label=""]
+
+/* Edges from input ports to channels */
+"farmersmarkets.csv_input_port" -> "farmersmarkets.csv"
+
+/* Edges from channels to output ports */
+"farmersmarkets_or.csv" -> "farmersmarkets_or.csv_output_port"
+
+/* End of top-level graph */
+}

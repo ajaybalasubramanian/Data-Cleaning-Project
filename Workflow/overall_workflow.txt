@@ -1,0 +1,19 @@
+# @begin Overall_Data_Cleaning_Workflow  @desc Overall Workflow for farmersmarkets dataset
+# @in farmersmarkets.csv
+
+#     @begin CleanWithOpenRefine  @desc Use OpenRefine to clean farmersmarkets.csv
+#     @in farmersmarkets.csv
+#     @out farmersmarkets_OR.csv
+#     @end CleanWithOpenRefine
+
+#     @begin IntegrityCheckWithSQLITE  @desc Use sqlite to check integrity
+#     @in farmersmarkets_OR.csv
+#     @out farmersmarkets_OR.csv
+#     @end IntegrityCheckWithSQLITE
+
+#     @begin CleanWithSQLITE  @desc Use sqlite to clean IC Violations
+#     @in farmersmarkets_OR.csv
+#     @out farmersmarkets_sql.csv
+#     @end CleanWithSqlite
+# @out farmersmarkets_sql.csv
+# @end Overall_Data_Cleaning_Workflow

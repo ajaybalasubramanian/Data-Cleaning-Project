@@ -1,0 +1,74 @@
+# @begin CleanWithOpenRefine  @desc OpenRefine Workflow for farmersmarkets dataset
+# @in farmersmarkets.csv
+
+#     @begin LoadintoOpenRefine  @desc Upload farmersmarkets.csv data into OpenRefine and clean following columns
+#     @in farmersmarkets.csv
+#     @out MarketName
+#     @out Facebook
+#     @out Twitter
+#     @out Website
+#     @out Youtube
+#     @out OtherMeida
+#     @out city
+#     @out street
+#     @out county
+#     @out state
+#     @out x
+#     @out y
+#     @out Season1Date
+#     @out Season2Date
+#     @out Season3Date
+#     @end LoadintoOpenRefine
+
+#     @begin TrimSpaces  @desc Trim leading and trailing white space
+#     @in MarketName
+#     @in Facebook
+#     @in Twitter
+#     @in Website
+#     @in Youtube
+#     @in OtherMeida
+#     @in street
+#     @in city
+#     @in county
+#     @in state
+#     @out farmersmarkets_or.csv
+#     @end TrimSpaces
+
+#     @begin CollapseSpaces  @desc Collapse consecutive white spaces
+#     @in MarketName
+#     @in Facebook
+#     @in Twitter
+#     @in Website
+#     @in Youtube
+#     @in OtherMeida
+#     @in street
+#     @in city
+#     @in county
+#     @in state
+#     @out farmersmarkets_or.csv
+#     @end CollapseSpaces
+
+#     @begin ClusterValues  @desc Cluster Similar values
+#     @in MarketName
+#     @in street
+#     @in city
+#     @in county
+#     @in state
+#     @out farmersmarkets_or.csv
+#     @end ClusterValues
+
+#     @begin SplitInto2Columns  @desc Split date into Start Date and End Date
+#     @in Season1Date
+#     @in Season2Date
+#     @in Season3Date
+#     @out farmersmarkets_or.csv
+#     @end SPlitInto2Columns
+
+#     @begin TexttoNumber  @desc Convert Text to Number
+#     @in Season1Date
+#     @in x
+#     @in y
+#     @out farmersmarkets_or.csv
+#     @end SPlitInto2Columns
+# @out farmersmarkets_or.csv
+# @end CleanWithOpenRefine

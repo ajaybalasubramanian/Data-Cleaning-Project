@@ -1,0 +1,4 @@
+SELECT COUNT(distinct FMID)-COUNT(FMID) FROM FARMERSMARKETDB;
+SELECT COUNT(FMID) FROM market WHERE FMID is NULL;
+SELECT zip, x, y FROM market WHERE (x != "" AND y!="") AND zip ="";
+SELECT FMID, Season1StartDate, Season1EndDate FROM market WHERE Season1StartDate> Season1EndDate;
